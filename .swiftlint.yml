@@ -16,7 +16,7 @@ file_length:
 
 identifier_name:
   min_length:
-    warning: 1
+    warning: 2
   excluded:
     - id    
     - ad
@@ -43,7 +43,6 @@ large_tuple:
 
 disabled_rules:
   - class_delegate_protocol # linter can't tell when restricted to AnyObject subclass
-  - todo # for now
 
 opt_in_rules:
   - closure_end_indentation
