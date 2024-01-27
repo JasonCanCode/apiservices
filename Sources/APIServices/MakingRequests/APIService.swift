@@ -94,7 +94,7 @@ open class APIService: NSObject, APIServiceType {
             return try await Self.sendRequest(request)
         }
 
-        // Set up the possibility use of mock requests
+        // Set up the possibile use of mock requests
         updateMockFileLoader(forResourcePath: resourcePath)
 
         guard shouldCacheResponses else {
