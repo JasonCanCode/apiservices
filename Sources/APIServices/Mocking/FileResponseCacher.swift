@@ -5,7 +5,12 @@ import Foundation
 /// This is set using the key `"mock_data_directory"` in the Info.plist (ex. `${PROJECT_DIR}/MockJSON/`)
 var mockDataDirectoryPath: String {
     guard let path = Bundle.main.object(forInfoDictionaryKey: "mock_data_directory") as? String else {
-        fatalError("Please add your test JSON root folder path to the main target's Info.plist as \"mock_data_directory\"")
+
+        if Configuration.shouldUseMockData || Configuration.shouldCacheResponses {
+            fatalError("Please add your test JSON root folder path to the main target's Info.plist as \"mock_data_directory\"")
+        } else {
+            return ""
+        }
     }
     return path
 }
