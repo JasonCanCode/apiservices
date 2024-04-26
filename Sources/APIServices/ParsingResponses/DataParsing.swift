@@ -171,6 +171,34 @@ public extension APIServiceType {
         )
     }
 
+    /// Send a generated `URLRequest`, injected with the proper headers and query data,
+    /// and return the response as the associated `Decodable` object on success in a thread-safe manner.
+    /// - Parameters:
+    ///   - resourcePath: The absolute path for creating the full endpoint path.
+    ///   - httpMethod: The HTTP request method. Defaults to POST.
+    ///   - queryItems: A dictionary of information to be converted to query items as part of the request.
+    ///   - keyDecodingStrategy: Used to determine how to decode a type’s coding keys from JSON keys. `.useDefaultKeys` by default.
+    /// - Returns: The associated `Decodable` object created from the network response.
+    /// - SeeAlso:
+    ///   - ``performRequest(_:httpMethod:queryItems:)``
+    ///   - ``parse(jsonData:error:keyDecodingStrategy:)``
+    @available(iOS 16.0, *)
+    @MainActor
+    func requestDecodableObject<T: Decodable>(
+        _ resourcePath: String,
+        httpMethod: HTTPMethod = .get,
+        queryItems: JSON,
+        keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys
+    ) async throws -> T {
+
+        let data = try await performRequest(
+            resourcePath,
+            httpMethod: httpMethod,
+            queryItems: queryItems
+        )
+        return try parse(jsonData: data, keyDecodingStrategy: keyDecodingStrategy)
+    }
+
     /// Send a generated `URLRequest`, injected with the proper headers and body data, and return the response
     /// as an array of the associated `Decodable` objects on success in a thread-safe manner.
     /// - Parameters:
