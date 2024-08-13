@@ -11,9 +11,7 @@ let package = Package(
         .library(
             name: "APIServices",
             targets: ["APIServices"]
-        ),
-        .plugin(name: "SwiftLint", targets: ["SwiftLint"]),
-        .plugin(name: "SwiftLintFix", targets: ["SwiftLintFix"])
+        )
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
@@ -21,35 +19,12 @@ let package = Package(
 
         .target(
             name: "APIServices",
-            dependencies: [],
-            plugins: ["SwiftLint"]
+            dependencies: []
         ),
         .testTarget(
             name: "APIServicesTests",
             dependencies: ["APIServices"],
             resources: [.copy("MockJSON")]
-        ),
-
-        // SwiftLint
-        .binaryTarget(
-            name: "SwiftLintBinary",
-            url: "https://github.com/realm/SwiftLint/releases/download/0.50.3/SwiftLintBinary-macos.artifactbundle.zip",
-            checksum: "abe7c0bb505d26c232b565c3b1b4a01a8d1a38d86846e788c4d02f0b1042a904"
-        ),
-
-        .plugin(
-            name: "SwiftLint",
-            capability: .buildTool(),
-            dependencies: ["SwiftLintBinary"]
-        ),
-
-        .plugin(
-            name: "SwiftLintFix",
-            capability: .command(
-                intent: .sourceCodeFormatting(),
-                permissions: [.writeToPackageDirectory(reason: "Fixes fixable lint issues")]
-            ),
-            dependencies: ["SwiftLintBinary"]
         )
     ]
 )
