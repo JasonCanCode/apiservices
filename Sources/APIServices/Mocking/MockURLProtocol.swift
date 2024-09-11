@@ -1,7 +1,7 @@
 import Foundation
 
 extension URLSession {
-    /// Toggles whether URLSession data is loaded from the ``MockURLProtocol``
+    /// Toggles whether URLSession data is loaded from the `MockURLProtocol`
     public static var useMockData: Bool = false {
         didSet {
             guard oldValue != useMockData else {

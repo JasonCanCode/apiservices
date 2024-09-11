@@ -175,6 +175,5 @@ if !BuildConfig.isTesting {
 - ``parse(jsonData:keyDecodingStrategy:)``
 - ``parse(jsonArrayData:initializer:)``
 - ``parse(failableArrayData:keyDecodingStrategy:)``
-- ``parse(pagedData:take:keyDecodingStrategy:)``
 - ``json(fromResponseData:)``
 - ``jsonArray(fromResponseData:)``

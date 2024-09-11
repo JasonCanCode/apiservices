@@ -27,7 +27,7 @@ open class APIService: NSObject, APIServiceType {
     ///
     ///  - Example: When creating a service to fetch user information, you might provide the ``serviceName`` "Users".
     ///  Getting a user object from the endpoint ` https://www.mysite.com/service/Users/GetDetails` would look like this:
-    ///  ```
+    ///  ```swift
     ///     let service = APIService(serviceName: "Users", rootURLString: "https://www.mysite.com/service")
     ///     let userData: Data = try await service.performRequest("GetDetails", parameters: userParams)
     ///     return userData

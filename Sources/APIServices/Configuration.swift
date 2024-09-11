@@ -8,7 +8,7 @@ public protocol ErrorLogger {
 /// A shared object to manage any dependency injections into the Network module.
 public struct Configuration {
     /// A service for logging any issues. By default, this means printing to the console
-    /// but we typically replace that with logging non-fatal errors in Crashlytics using FirebaseHelper.
+    /// but we typically replace that with logging non-fatal errors in Crashlytics using a FirebaseHelper.
     public static var errorLogger: ErrorLogger = StandardErrorLogger()
     /// The root path used for url generation. For example: `"https://www.mysite.com/api"`
     public static var defaultServerRootPath = "https://www.mysite.com/api"

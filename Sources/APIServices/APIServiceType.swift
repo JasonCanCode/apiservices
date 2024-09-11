@@ -22,7 +22,7 @@ public typealias RequestCompletionHandler = ((Data?, Error?) -> Void)
     ///   - paramData: Data to include in the `httpBody` of the generated request.
     ///   - completionHandler: The block of code to execute when a request task has concluded.
     /// - Returns: An abstraction of a `Task` that can be started with `resume()` and terminated prematurely with `cancel()`.
-    /// - SeeAlso: ``Configuration.addHeadersToRequest``
+    /// - SeeAlso: ``Configuration/addHeadersToRequest``
     func dataTask(
         _ resourcePath: String,
         httpMethod: HTTPMethod,
@@ -67,7 +67,7 @@ public extension APIServiceType {
     ///   - httpMethod: The HTTP request method. Defaults to POST.
     ///   - paramData: Data to include in the `httpBody` of the generated request.
     /// - Returns: Data created from the network response.
-    /// - SeeAlso: ``Configuration.addHeadersToRequest``
+    /// - SeeAlso: ``Configuration/addHeadersToRequest``
     @MainActor
     func performRequest(_ resourcePath: String, httpMethod: HTTPMethod = .get, paramData: Data? = nil) async throws -> Data {
         try await withCheckedThrowingContinuation { continuation in
@@ -101,7 +101,7 @@ public extension APIServiceType {
     ///   - httpMethod: The HTTP request method. Defaults to POST.
     ///   - parameters: An optional dictionary of information to be encoded as JSON Data in the body.
     /// - Returns: Data created from the network response.
-    /// - SeeAlso: ``Configuration.addHeadersToRequest``
+    /// - SeeAlso: ``Configuration/addHeadersToRequest``
     @MainActor
     func performRequest(
         _ resourcePath: String,
@@ -119,7 +119,7 @@ public extension APIServiceType {
     ///   - httpMethod: The HTTP request method. Defaults to POST.
     ///   - queryItems: A dictionary of information to be converted to query items as part of the request.
     /// - Returns: Data created from the network response.
-    /// - SeeAlso: ``Configuration.addHeadersToRequest``
+    /// - SeeAlso: ``Configuration/addHeadersToRequest``
     @available(iOS 16.0, *)
     @MainActor
     func performRequest(
@@ -142,7 +142,7 @@ public extension APIServiceType {
     ///   - httpMethod: The HTTP request method. Defaults to POST.
     ///   - encodableBody: An `Encodable` object used to generate the data for the request body.
     /// - Returns: Data created from the network response.
-    /// - SeeAlso: ``Configuration.addHeadersToRequest``
+    /// - SeeAlso: ``Configuration/addHeadersToRequest``
     @MainActor
     func performRequest<Body: Encodable>(
         _ resourcePath: String,
@@ -167,7 +167,7 @@ public extension APIServiceType {
     ///   - httpMethod: The HTTP request method. Defaults to POST.
     ///   - encodableBody: An `Encodable` object used to generate the data for the request body.
     /// - Returns: A complete request object with the necessary headers and parameters included.
-    /// - SeeAlso: ``Configuration.addHeadersToRequest``
+    /// - SeeAlso: ``Configuration/addHeadersToRequest``
     func request<Body: Encodable>(
         _ resourcePath: String,
         httpMethod: HTTPMethod = .get,
@@ -185,7 +185,7 @@ public extension APIServiceType {
     ///   - httpMethod: The HTTP request method. Defaults to POST.
     ///   - parameterData: Data to include in the `httpBody` of the generated request.
     /// - Returns: A complete request object with the necessary headers and parameters included.
-    /// - SeeAlso: ``Configuration.addHeadersToRequest``
+    /// - SeeAlso: ``Configuration/addHeadersToRequest``
     func request(
         _ resourcePath: String,
         httpMethod: HTTPMethod = .get,
@@ -202,7 +202,7 @@ public extension APIServiceType {
     ///   - httpMethod: The HTTP request method. Defaults to POST.
     ///   - queryItems: A dictionary of information to be converted to query items as part of the request.
     /// - Returns: A complete request object with the necessary headers and parameters included.
-    /// - SeeAlso: ``Configuration.addHeadersToRequest``
+    /// - SeeAlso: ``Configuration/addHeadersToRequest``
     @available(iOS 16.0, *)
     func request(
         _ resourcePath: String,
@@ -222,7 +222,7 @@ public extension APIServiceType {
     ///   - encoding: The way in which our request parameters are being encoded within the request. Defaults to `APIServiceDataEncoding.json`.
     ///   - parameterData: Data to include in the `httpBody` of the generated request.
     /// - Returns: A complete request object with the necessary headers and parameters included.
-    /// - SeeAlso: ``Configuration.addHeadersToRequest``
+    /// - SeeAlso: ``Configuration/addHeadersToRequest``
     static func request(
         url: URL,
         httpMethod: HTTPMethod = .get,
